@@ -16,11 +16,13 @@ export const PageContent = styled.div`
   display: flex;
   flex-direction: row;
   position: absolute;
-  background: rgba(0, 0, 255, 0.1);
+  background: #00f;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Region = styled.div`
@@ -28,6 +30,7 @@ export const Region = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
+  align-self: flex-end;
   justify-self: flex-end;
   padding: ${Spaces.BasePadding};
   z-index: 2;
@@ -54,9 +57,9 @@ export const PokemonList = styled.ul`
   display: flex;
   flex: 1;
   height: 100%;
-  /* width: 120vw; */
+  width: 90vw;
   position: relative;
-  /* left: -10vw; */
+  left: -10vw;
 `;
 
 export const PreviousPokemon = styled.li`
@@ -65,12 +68,14 @@ export const PreviousPokemon = styled.li`
   justify-content: center;
   align-items: center;
 `;
+
 export const CurrentPokemon = styled.li`
-  flex: 4;
+  flex: 5;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
 export const NextPokemon = styled.li`
   flex: 1;
   display: flex;
@@ -83,7 +88,28 @@ export const HidePokemon = styled.img`
   opacity: 0.1;
   max-width: 100%;
 `;
+
 export const ShowPokemon = styled.img`
   width: 70%;
   opacity: 1;
 `;
+
+export const PokemonInformationBox = styled.div`
+  height: 60%;
+  position: relative;
+  padding: 0 ${Spaces.BasePadding};
+  &::before {
+    content: '';
+    background: ${Colors.White};
+    height: 100%;
+    width: 5px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 5px;
+  }
+`;
+
+export const TypesBox = styled.div``;
+export const TypesList = styled.ul``;
+export const Type = styled.li``;

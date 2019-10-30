@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import api from '~/services/Api';
 import Title from '~/components/Title';
+
 import PokemonsImage from '~/assets/pokemons';
+import TypesImage from '~/assets/types';
 
 import {
   Container,
@@ -16,6 +18,10 @@ import {
   NextPokemon,
   HidePokemon,
   ShowPokemon,
+  PokemonInformationBox,
+  TypesBox,
+  TypesList,
+  Type,
 } from './styles';
 
 function Pokemon({ match: { params } }) {
@@ -36,6 +42,7 @@ function Pokemon({ match: { params } }) {
     };
     getPokemon();
   }, [slug]);
+  console.tron.log(currentPokemon);
 
   return (
     <Container style={{ background: `#${slug}` }}>
@@ -51,21 +58,20 @@ function Pokemon({ match: { params } }) {
               <HidePokemon src={PokemonsImage[previousPokemon.name]} />
             </PreviousPokemon>
             <CurrentPokemon>
-              <ShowPokemon src={PokemonsImage[currentPokemon.name]} />
+              {/* <ShowPokemon src={PokemonsImage[currentPokemon.name]} /> */}
             </CurrentPokemon>
             <NextPokemon>
               <HidePokemon src={PokemonsImage[nextPokemon.name]} />
             </NextPokemon>
           </PokemonList>
         </PokemonBox>
-        {/* <div>
-          <div>
-            <ul>
-              <li>Lorem</li>
-              <li>Lorem</li>
-            </ul>
-          </div>
-          <div>
+        <PokemonInformationBox>
+          <TypesBox>
+            <TypesList>
+              <Type>type</Type>
+            </TypesList>
+          </TypesBox>
+          {/* <div>
             <div>
               <ul>
                 <li>Lorem:LoremLorem</li>
@@ -73,8 +79,8 @@ function Pokemon({ match: { params } }) {
                 <li>Lorem:LoremLoremLorem</li>
               </ul>
             </div>
-          </div>
-        </div> */}
+          </div> */}
+        </PokemonInformationBox>
       </PageContent>
     </Container>
   );
