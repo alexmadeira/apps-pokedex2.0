@@ -14,7 +14,7 @@ export default createGlobalStyle`
 html,
 body,
 #root {
-  min-height: 100%;
+  height: 100%;
   display:flex;
   flex-direction:column;
   flex:1;
@@ -30,6 +30,22 @@ body {
   text-rendering: optimizeLegibility !important;
   background: #fff;
   max-width: 100vw;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 }
+
+.page-enter {
+  opacity: 0;
+}
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.page-exit {
+  opacity: 1;
+}
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
 `;
