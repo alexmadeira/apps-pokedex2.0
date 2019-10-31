@@ -16,7 +16,6 @@ export const PageContent = styled.div`
   display: flex;
   flex-direction: row;
   position: absolute;
-  background: #00f;
   left: 0;
   top: 0;
   height: 100%;
@@ -109,7 +108,3 @@ export const PokemonInformationBox = styled.div`
     border-radius: 5px;
   }
 `;
-
-export const TypesBox = styled.div``;
-export const TypesList = styled.ul``;
-export const Type = styled.li``;

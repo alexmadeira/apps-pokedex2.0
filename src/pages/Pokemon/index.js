@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import api from '~/services/Api';
 import Title from '~/components/Title';
+import Types from '~/components/Types';
 
 import PokemonsImage from '~/assets/pokemons';
-import TypesImage from '~/assets/types';
 
 import {
   Container,
@@ -19,22 +19,19 @@ import {
   HidePokemon,
   ShowPokemon,
   PokemonInformationBox,
-  TypesBox,
-  TypesList,
-  Type,
 } from './styles';
 
 function Pokemon({ match: { params } }) {
   const { slug } = params;
-  const [previousPokemon, setPreviousPokemon] = useState({});
-  const [currentPokemon, setCurrentPokemon] = useState({});
-  const [nextPokemon, setNextPokemon] = useState({});
+  const [previousPokemon, setPreviousPokemon] = useState(false);
+  const [currentPokemon, setCurrentPokemon] = useState(false);
+  const [nextPokemon, setNextPokemon] = useState(false);
 
   useEffect(() => {
     const getPokemon = async () => {
-      const current = await api.get(`pokemon/${slug}`);
-      const previous = await api.get(`pokemon/${current.data.id - 1}`);
-      const next = await api.get(`pokemon/${current.data.id + 1}`);
+      const current = await api.get(`pokemon/${slug}/`);
+      const previous = await api.get(`pokemon/${current.data.id - 1}/`);
+      const next = await api.get(`pokemon/${current.data.id + 1}/`);
 
       setCurrentPokemon(current.data);
       setPreviousPokemon(previous.data);
@@ -42,36 +39,33 @@ function Pokemon({ match: { params } }) {
     };
     getPokemon();
   }, [slug]);
-  console.tron.log(currentPokemon);
 
   return (
-    <Container style={{ background: `#${slug}` }}>
-      <Title id={30} name={slug} />
+    <>
+      {currentPokemon && (
+        <Container style={{ background: `#${slug}` }}>
+          <Title id={30} name={slug} />
 
-      <PageContent>
-        <Region>
-          <p>Region: Kanto</p>
-        </Region>
-        <PokemonBox>
-          <PokemonList>
-            <PreviousPokemon>
-              <HidePokemon src={PokemonsImage[previousPokemon.name]} />
-            </PreviousPokemon>
-            <CurrentPokemon>
-              {/* <ShowPokemon src={PokemonsImage[currentPokemon.name]} /> */}
-            </CurrentPokemon>
-            <NextPokemon>
-              <HidePokemon src={PokemonsImage[nextPokemon.name]} />
-            </NextPokemon>
-          </PokemonList>
-        </PokemonBox>
-        <PokemonInformationBox>
-          <TypesBox>
-            <TypesList>
-              <Type>type</Type>
-            </TypesList>
-          </TypesBox>
-          {/* <div>
+          <PageContent>
+            <Region>
+              <p>Region: Kanto</p>
+            </Region>
+            <PokemonBox>
+              <PokemonList>
+                <PreviousPokemon>
+                  <HidePokemon src={PokemonsImage[previousPokemon.name]} />
+                </PreviousPokemon>
+                <CurrentPokemon>
+                  <ShowPokemon src={PokemonsImage[currentPokemon.name]} />
+                </CurrentPokemon>
+                <NextPokemon>
+                  <HidePokemon src={PokemonsImage[nextPokemon.name]} />
+                </NextPokemon>
+              </PokemonList>
+            </PokemonBox>
+            <PokemonInformationBox>
+              <Types typeList={currentPokemon.types} />
+              {/* <div>
             <div>
               <ul>
                 <li>Lorem:LoremLorem</li>
@@ -80,9 +74,11 @@ function Pokemon({ match: { params } }) {
               </ul>
             </div>
           </div> */}
-        </PokemonInformationBox>
-      </PageContent>
-    </Container>
+            </PokemonInformationBox>
+          </PageContent>
+        </Container>
+      )}
+    </>
   );
 }
 
