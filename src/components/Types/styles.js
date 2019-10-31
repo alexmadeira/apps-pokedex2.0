@@ -23,7 +23,7 @@ export const Type = styled.li`
       ${Colors.Light} 100%
     );
     border-radius: 50%;
-    box-shadow: 0 20px 25px -10px ${Colors.Shadow};
+    box-shadow: 0 20px 25px -10px ${Colors.DarkShadow};
     margin: 0 ${Spaces.BaseMargin} ${Spaces.BaseMargin} 0;
   }
 `;

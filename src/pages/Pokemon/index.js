@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import analyze from 'rgbaster';
 import PropTypes from 'prop-types';
 
 import api from '~/services/Api';
 import Header from '~/components/Header';
 import Types from '~/components/Types';
+import Stats from '~/components/Stats';
 
 import PokemonsImage from '~/assets/pokemons';
 
@@ -27,6 +29,7 @@ function Pokemon({ match: { params } }) {
   const [previousPokemon, setPreviousPokemon] = useState(false);
   const [currentPokemon, setCurrentPokemon] = useState(false);
   const [nextPokemon, setNextPokemon] = useState(false);
+  const [color, setColor] = useState(false);
 
   useEffect(() => {
     const getPokemon = async () => {
@@ -43,10 +46,24 @@ function Pokemon({ match: { params } }) {
     getPokemon();
   }, [slug]);
 
+  const analisar = useCallback(async () => {
+    if (currentPokemon) {
+      const result = await analyze(PokemonsImage[currentPokemon.name], {
+        ignore: ['rgb(255,255,255)', 'rgb(0,0,0)'],
+        scale: 0.6,
+      });
+      setColor(result[0].color);
+    }
+  }, [currentPokemon]);
+
+  useEffect(() => {
+    analisar();
+  }, [analisar]);
+
   return (
     <>
-      {currentPokemon && (
-        <Container style={{ background: `#${slug}` }}>
+      {color && (
+        <Container style={{ background: color }}>
           <Header id={30} name={slug} />
 
           <PageContent>
@@ -59,7 +76,7 @@ function Pokemon({ match: { params } }) {
                   <HidePokemon src={PokemonsImage[previousPokemon.name]} />
                 </PreviousPokemon>
                 <CurrentPokemon>
-                  <ShowPokemon src={PokemonsImage[currentPokemon.name]} />
+                  {/* <ShowPokemon src={PokemonsImage[currentPokemon.name]} /> */}
                 </CurrentPokemon>
                 <NextPokemon>
                   <HidePokemon src={PokemonsImage[nextPokemon.name]} />
@@ -69,15 +86,7 @@ function Pokemon({ match: { params } }) {
             <PokemonInformationBox>
               <Types typeList={currentPokemon.types} />
               <Title>Stats:</Title>
-              {/* <div>
-            <div>
-              <ul>
-                <li>Lorem:LoremLorem</li>
-                <li>Lorem:Lorem</li>
-                <li>Lorem:LoremLoremLorem</li>
-              </ul>
-            </div>
-          </div> */}
+              <Stats statsList={currentPokemon.stats} />
             </PokemonInformationBox>
           </PageContent>
         </Container>

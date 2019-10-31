@@ -8,7 +8,6 @@ export const Container = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
-  background: #069;
 `;
 
 export const PageContent = styled.div`
@@ -57,7 +56,7 @@ export const Title = styled.h2`
   font-size: ${Fonts.sizes.Bigger};
   font-weight: 800;
   margin-bottom: 30px;
-  text-shadow: 0 15px 30px ${Colors.Shadow};
+  text-shadow: 0 15px 30px ${Colors.DarkShadow};
 `;
 export const PokemonList = styled.ul`
   list-style: none;
@@ -103,7 +102,7 @@ export const ShowPokemon = styled.img`
 
 export const PokemonInformationBox = styled.div`
   height: 60%;
-  width: 300px;
+  width: 30vw;
   display: flex;
   flex-direction: column;
   position: relative;
