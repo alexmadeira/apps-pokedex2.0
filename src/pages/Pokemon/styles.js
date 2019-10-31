@@ -8,6 +8,7 @@ export const Container = styled.div`
   top: 0;
   width: 100%;
   height: 100%;
+  background: #069;
 `;
 
 export const PageContent = styled.div`
@@ -37,7 +38,7 @@ export const Region = styled.div`
     margin-bottom: calc(${Spaces.BaseMargin} * 5);
     transform: rotate(-90deg);
     transform-origin: left top;
-    font-size: ${Fonts.sizes.small};
+    font-size: ${Fonts.sizes.Small};
     color: ${Colors.White};
     font-weight: bold;
   }
@@ -51,6 +52,13 @@ export const PokemonBox = styled.div`
   position: absolute;
 `;
 
+export const Title = styled.h2`
+  color: #ffffff;
+  font-size: ${Fonts.sizes.Bigger};
+  font-weight: 800;
+  margin-bottom: 30px;
+  text-shadow: 0 15px 30px ${Colors.Shadow};
+`;
 export const PokemonList = styled.ul`
   list-style: none;
   display: flex;
@@ -95,16 +103,9 @@ export const ShowPokemon = styled.img`
 
 export const PokemonInformationBox = styled.div`
   height: 60%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
   position: relative;
   padding: 0 ${Spaces.BasePadding};
-  &::before {
-    content: '';
-    background: ${Colors.White};
-    height: 100%;
-    width: 5px;
-    position: absolute;
-    left: 0;
-    top: 0;
-    border-radius: 5px;
-  }
 `;

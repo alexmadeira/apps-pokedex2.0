@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Container } from './styles';
 
-function Title({ id, name }) {
+function Header({ id, name }) {
   return (
     <Container>
       <p>#{`00${id}`.slice(-3)}</p>
@@ -11,8 +11,8 @@ function Title({ id, name }) {
   );
 }
 
-Title.propTypes = {
+Header.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
 };
-export default Title;
+export default Header;

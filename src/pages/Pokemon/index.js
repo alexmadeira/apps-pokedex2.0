@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import api from '~/services/Api';
-import Title from '~/components/Title';
+import Header from '~/components/Header';
 import Types from '~/components/Types';
 
 import PokemonsImage from '~/assets/pokemons';
@@ -12,6 +12,7 @@ import {
   PageContent,
   Region,
   PokemonBox,
+  Title,
   PokemonList,
   PreviousPokemon,
   CurrentPokemon,
@@ -30,11 +31,13 @@ function Pokemon({ match: { params } }) {
   useEffect(() => {
     const getPokemon = async () => {
       const current = await api.get(`pokemon/${slug}/`);
-      const previous = await api.get(`pokemon/${current.data.id - 1}/`);
-      const next = await api.get(`pokemon/${current.data.id + 1}/`);
-
       setCurrentPokemon(current.data);
-      setPreviousPokemon(previous.data);
+
+      if (current.data.id - 1 > 0) {
+        const previous = await api.get(`pokemon/${current.data.id - 1}/`);
+        setPreviousPokemon(previous.data || {});
+      }
+      const next = await api.get(`pokemon/${current.data.id + 1}/`);
       setNextPokemon(next.data);
     };
     getPokemon();
@@ -44,7 +47,7 @@ function Pokemon({ match: { params } }) {
     <>
       {currentPokemon && (
         <Container style={{ background: `#${slug}` }}>
-          <Title id={30} name={slug} />
+          <Header id={30} name={slug} />
 
           <PageContent>
             <Region>
@@ -65,6 +68,7 @@ function Pokemon({ match: { params } }) {
             </PokemonBox>
             <PokemonInformationBox>
               <Types typeList={currentPokemon.types} />
+              <Title>Stats:</Title>
               {/* <div>
             <div>
               <ul>
