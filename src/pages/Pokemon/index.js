@@ -64,30 +64,30 @@ function Pokemon({ match: { params } }) {
     <>
       {color && (
         <Container style={{ background: color }}>
-          <Header id={30} name={slug} />
+          {/* <Header id={30} name={slug} /> */}
 
           <PageContent>
             <Region>
               <p>Region: Kanto</p>
             </Region>
-            <PokemonBox>
+            {/* <PokemonBox>
               <PokemonList>
                 <PreviousPokemon>
                   <HidePokemon src={PokemonsImage[previousPokemon.name]} />
                 </PreviousPokemon>
                 <CurrentPokemon>
-                  {/* <ShowPokemon src={PokemonsImage[currentPokemon.name]} /> */}
+                  <ShowPokemon src={PokemonsImage[currentPokemon.name]} />
                 </CurrentPokemon>
                 <NextPokemon>
                   <HidePokemon src={PokemonsImage[nextPokemon.name]} />
                 </NextPokemon>
               </PokemonList>
-            </PokemonBox>
-            <PokemonInformationBox>
+            </PokemonBox> */}
+            {/* <PokemonInformationBox>
               <Types typeList={currentPokemon.types} />
               <Title>Stats:</Title>
               <Stats statsList={currentPokemon.stats} />
-            </PokemonInformationBox>
+            </PokemonInformationBox> */}
           </PageContent>
         </Container>
       )}

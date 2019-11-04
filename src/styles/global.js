@@ -17,6 +17,7 @@ body,
   height: 100%;
   display:flex;
   flex-direction:column;
+  justify-content:space-between;
   flex:1;
   z-index: 1;
 }
