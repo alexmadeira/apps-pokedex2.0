@@ -9,7 +9,7 @@ export default function Routes() {
     <Route
       render={({ location }) => (
         <TransitionGroup>
-          <CSSTransition key={location.key} timeout={500} classNames="page">
+          <CSSTransition key={location.key} timeout={800} classNames="page">
             <Switch location={location}>
               <Route path="/" exact component={Pokemon} />
               <Route path="/:slug" component={Pokemon} />

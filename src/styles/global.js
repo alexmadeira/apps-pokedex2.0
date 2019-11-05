@@ -39,14 +39,14 @@ body {
 }
 .page-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  transition: opacity 800ms ease-in;
 }
 .page-exit {
   opacity: 1;
 }
 .page-exit-active {
   opacity: 0;
-  transition: opacity 500ms ease-in;
+  transition: opacity 800ms ease-in;
 }
 
 `;

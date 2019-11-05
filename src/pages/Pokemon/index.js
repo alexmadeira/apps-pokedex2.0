@@ -11,6 +11,7 @@ import PokemonsImage from '~/assets/pokemons';
 import PokemonsContext from '~/contexts/PokemonsContext';
 
 import {
+  Page,
   Container,
   PageContent,
   Region,
@@ -51,7 +52,7 @@ function Pokemon() {
       const previous =
         current.data.id - 1 > 0
           ? await api.get(`pokemon/${current.data.id - 1}/`)
-          : false;
+          : {};
       const next = await api.get(`pokemon/${current.data.id + 1}/`);
 
       const currentImageName = formatImageName(current.data);
@@ -97,7 +98,7 @@ function Pokemon() {
   }, [analisar]);
   console.tron.log(previousPokemonData);
   return (
-    <>
+    <Page>
       {color && (
         <Container style={{ background: color }}>
           <Header id={currentPokemonData.id} name={currentPokemonData.name} />
@@ -131,7 +132,7 @@ function Pokemon() {
           </PageContent>
         </Container>
       )}
-    </>
+    </Page>
   );
 }
 
