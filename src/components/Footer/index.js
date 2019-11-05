@@ -37,6 +37,7 @@ export default function Footer() {
             showPokemon(previousPokemon || '');
           }}
         >
+          {previousPokemon}
           <FaChevronLeft />
         </button>
       )}
@@ -56,6 +57,7 @@ export default function Footer() {
             showPokemon(nextPokemon || '');
           }}
         >
+          {nextPokemon}
           <FaChevronRight />
         </button>
       )}

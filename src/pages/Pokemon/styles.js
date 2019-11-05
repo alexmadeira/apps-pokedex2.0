@@ -65,14 +65,14 @@ export const PokemonList = styled.ul`
   height: 100%;
   width: 90vw;
   position: relative;
-  left: -10vw;
 `;
 
 export const PreviousPokemon = styled.li`
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  padding-bottom: calc(${Spaces.BasePadding} * 4);
 `;
 
 export const CurrentPokemon = styled.li`
@@ -86,7 +86,8 @@ export const NextPokemon = styled.li`
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
+  padding-bottom: calc(${Spaces.BasePadding} * 4);
 `;
 
 export const HidePokemon = styled.img`

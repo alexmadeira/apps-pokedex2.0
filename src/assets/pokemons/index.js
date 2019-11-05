@@ -5,7 +5,6 @@ function importAll(ImagList) {
     const imageName = image
       .replace('./', '')
       .split('.')[0]
-      .substring(3)
       .toLowerCase();
 
     images[imageName] = ImagList(image);

@@ -12,9 +12,11 @@ import Routes from '~/routes';
 import Footer from '~/components/Footer';
 
 function App() {
+  const slug = history.location.pathname.replace('/', '');
+
   const [pokemons, setPokemons] = useState({
     previousPokemon: false,
-    currentPokemon: 'bulbasaur',
+    currentPokemon: slug || 'bulbasaur',
     nextPokemon: false,
   });
 

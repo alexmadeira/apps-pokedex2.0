@@ -36,6 +36,15 @@ function Pokemon() {
   const [nextPokemonData, setNextPokemonData] = useState(false);
   const [color, setColor] = useState(false);
 
+  function formatImageName(pokemonData) {
+    if (!pokemonData) return '';
+    const { id, name } = pokemonData;
+    const formartId = `00${id}`.slice(-3);
+    const [formatName] = name.split('-');
+    const imageName = formartId + formatName;
+    return imageName;
+  }
+
   useEffect(() => {
     const getPokemon = async () => {
       const current = await api.get(`pokemon/${currentPokemon}/`);
@@ -44,6 +53,14 @@ function Pokemon() {
           ? await api.get(`pokemon/${current.data.id - 1}/`)
           : false;
       const next = await api.get(`pokemon/${current.data.id + 1}/`);
+
+      const currentImageName = formatImageName(current.data);
+      const previousImageName = formatImageName(previous.data);
+      const nextImageName = formatImageName(next.data);
+
+      current.data = { ...current.data, imageName: currentImageName };
+      previous.data = { ...previous.data, imageName: previousImageName };
+      next.data = { ...next.data, imageName: nextImageName };
 
       setCurrentPokemonData(current.data || {});
       setPreviousPokemonData(previous.data || {});
@@ -61,7 +78,9 @@ function Pokemon() {
 
   const analisar = useCallback(async () => {
     if (currentPokemonData) {
-      const result = await analyze(PokemonsImage[currentPokemonData.name], {
+      const { imageName } = currentPokemonData;
+
+      const result = await analyze(PokemonsImage[imageName], {
         ignore: [
           'rgb(255,255,255)',
           'rgb(0,0,0)',
@@ -76,7 +95,7 @@ function Pokemon() {
   useEffect(() => {
     analisar();
   }, [analisar]);
-
+  console.tron.log(previousPokemonData);
   return (
     <>
       {color && (
@@ -90,13 +109,17 @@ function Pokemon() {
             <PokemonBox>
               <PokemonList>
                 <PreviousPokemon>
-                  <HidePokemon src={PokemonsImage[previousPokemonData.name]} />
+                  <HidePokemon
+                    src={PokemonsImage[previousPokemonData.imageName]}
+                  />
                 </PreviousPokemon>
                 <CurrentPokemon>
-                  <ShowPokemon src={PokemonsImage[currentPokemonData.name]} />
+                  <ShowPokemon
+                    src={PokemonsImage[currentPokemonData.imageName]}
+                  />
                 </CurrentPokemon>
                 <NextPokemon>
-                  <HidePokemon src={PokemonsImage[nextPokemonData.name]} />
+                  <HidePokemon src={PokemonsImage[nextPokemonData.imageName]} />
                 </NextPokemon>
               </PokemonList>
             </PokemonBox>
