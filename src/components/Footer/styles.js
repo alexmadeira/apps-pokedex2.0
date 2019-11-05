@@ -7,7 +7,7 @@ export const Container = styled.div`
   z-index: 5;
   justify-self: flex-end;
   align-self: center;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
   margin-bottom: ${Spaces.BaseMargin};
 `;

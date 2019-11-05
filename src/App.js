@@ -1,27 +1,31 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Router } from 'react-router-dom';
 
 import GlobalStyle from '~/styles/global';
+import history from '~/services/History';
 
 import '~/config/ReactotronConfig';
 
-import Routes from '~/routes';
 import { PokemonsProvider } from '~/contexts/PokemonsContext';
+
+import Routes from '~/routes';
 import Footer from '~/components/Footer';
 
 function App() {
+  const [pokemons, setPokemons] = useState({
+    previousPokemon: false,
+    currentPokemon: false,
+    nextPokemon: false,
+  });
+
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <GlobalStyle />
-      <PokemonsProvider
-        value={{
-          actualPokemon: {},
-        }}
-      >
+      <PokemonsProvider value={{ pokemons, setPokemons }}>
         <Routes />
+        <Footer />
       </PokemonsProvider>
-      <Footer />
-    </BrowserRouter>
+    </Router>
   );
 }
 

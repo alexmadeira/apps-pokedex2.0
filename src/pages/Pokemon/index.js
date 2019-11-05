@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useContext } from 'react';
 import analyze from 'rgbaster';
 import PropTypes from 'prop-types';
 
@@ -8,6 +8,7 @@ import Types from '~/components/Types';
 import Stats from '~/components/Stats';
 
 import PokemonsImage from '~/assets/pokemons';
+import PokemonsContext from '~/contexts/PokemonsContext';
 
 import {
   Container,
@@ -26,35 +27,50 @@ import {
 
 function Pokemon({ match: { params } }) {
   const { slug } = params;
-  const [previousPokemon, setPreviousPokemon] = useState(false);
-  const [currentPokemon, setCurrentPokemon] = useState(false);
-  const [nextPokemon, setNextPokemon] = useState(false);
+  const { setPokemons } = useContext(PokemonsContext);
+
+  const [previousPokemonData, setPreviousPokemonData] = useState(false);
+  const [currentPokemonData, setCurrentPokemonData] = useState(false);
+  const [nextPokemonData, setNextPokemonData] = useState(false);
   const [color, setColor] = useState(false);
 
   useEffect(() => {
     const getPokemon = async () => {
       const current = await api.get(`pokemon/${slug}/`);
-      setCurrentPokemon(current.data);
-
-      if (current.data.id - 1 > 0) {
-        const previous = await api.get(`pokemon/${current.data.id - 1}/`);
-        setPreviousPokemon(previous.data || {});
-      }
+      const previous =
+        current.data.id - 1 > 0
+          ? await api.get(`pokemon/${current.data.id - 1}/`)
+          : false;
       const next = await api.get(`pokemon/${current.data.id + 1}/`);
-      setNextPokemon(next.data);
+
+      setCurrentPokemonData(current.data || {});
+      setPreviousPokemonData(previous.data || {});
+      setNextPokemonData(next.data || {});
+
+      setPokemons({
+        previousPokemon: previous ? previous.data.name : false,
+        currentPokemon: current ? current.data.name : false,
+        nextPokemon: next ? next.data.name : false,
+      });
     };
+
     getPokemon();
-  }, [slug]);
+  }, [setPokemons, slug]);
 
   const analisar = useCallback(async () => {
-    if (currentPokemon) {
-      const result = await analyze(PokemonsImage[currentPokemon.name], {
-        ignore: ['rgb(255,255,255)', 'rgb(0,0,0)'],
-        scale: 0.6,
+    if (currentPokemonData) {
+      const result = await analyze(PokemonsImage[currentPokemonData.name], {
+        ignore: [
+          'rgb(255,255,255)',
+          'rgb(0,0,0)',
+          'rgba(0,0,0,1)',
+          'rgba(0,0,0,2)',
+        ],
       });
+      console.tron.log(result);
       setColor(result[0].color);
     }
-  }, [currentPokemon]);
+  }, [currentPokemonData]);
 
   useEffect(() => {
     analisar();
@@ -64,30 +80,30 @@ function Pokemon({ match: { params } }) {
     <>
       {color && (
         <Container style={{ background: color }}>
-          {/* <Header id={30} name={slug} /> */}
+          <Header id={currentPokemonData.id} name={slug} />
 
           <PageContent>
             <Region>
               <p>Region: Kanto</p>
             </Region>
-            {/* <PokemonBox>
+            <PokemonBox>
               <PokemonList>
                 <PreviousPokemon>
-                  <HidePokemon src={PokemonsImage[previousPokemon.name]} />
+                  <HidePokemon src={PokemonsImage[previousPokemonData.name]} />
                 </PreviousPokemon>
                 <CurrentPokemon>
-                  <ShowPokemon src={PokemonsImage[currentPokemon.name]} />
+                  <ShowPokemon src={PokemonsImage[currentPokemonData.name]} />
                 </CurrentPokemon>
                 <NextPokemon>
-                  <HidePokemon src={PokemonsImage[nextPokemon.name]} />
+                  <HidePokemon src={PokemonsImage[nextPokemonData.name]} />
                 </NextPokemon>
               </PokemonList>
-            </PokemonBox> */}
-            {/* <PokemonInformationBox>
-              <Types typeList={currentPokemon.types} />
+            </PokemonBox>
+            <PokemonInformationBox>
+              <Types typeList={currentPokemonData.types} />
               <Title>Stats:</Title>
-              <Stats statsList={currentPokemon.stats} />
-            </PokemonInformationBox> */}
+              <Stats statsList={currentPokemonData.stats} />
+            </PokemonInformationBox>
           </PageContent>
         </Container>
       )}
