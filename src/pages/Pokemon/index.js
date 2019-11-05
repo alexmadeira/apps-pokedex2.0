@@ -67,7 +67,6 @@ function Pokemon({ match: { params } }) {
           'rgba(0,0,0,2)',
         ],
       });
-      console.tron.log(result);
       setColor(result[0].color);
     }
   }, [currentPokemonData]);
