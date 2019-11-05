@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
 import { Container, SearchForm } from './styles';
@@ -10,6 +9,7 @@ import history from '~/services/History';
 export default function Footer() {
   const {
     pokemons: { previousPokemon, nextPokemon },
+    setPokemons,
   } = useContext(PokemonsContext);
 
   const [findPokemon, setFindPokemon] = useState('');
@@ -20,14 +20,25 @@ export default function Footer() {
     history.push(`/${findPokemon}`);
   }
 
+  function showPokemon(pokemonName) {
+    setPokemons({
+      currentPokemon: pokemonName,
+    });
+
+    history.push(`/${pokemonName}`);
+  }
+
   return (
     <Container>
       {!!previousPokemon && (
-        <Link to={`/${previousPokemon}`}>
-          <a href="/#">
-            <FaChevronLeft />
-          </a>
-        </Link>
+        <button
+          type="button"
+          onClick={() => {
+            showPokemon(previousPokemon || '');
+          }}
+        >
+          <FaChevronLeft />
+        </button>
       )}
       <SearchForm onSubmit={e => searchPokemon(e)}>
         <input
@@ -39,11 +50,14 @@ export default function Footer() {
         </button>
       </SearchForm>
       {!!nextPokemon && (
-        <Link to={`/${nextPokemon}`}>
-          <a href="/#">
-            <FaChevronRight />
-          </a>
-        </Link>
+        <button
+          type="button"
+          onClick={() => {
+            showPokemon(nextPokemon || '');
+          }}
+        >
+          <FaChevronRight />
+        </button>
       )}
     </Container>
   );

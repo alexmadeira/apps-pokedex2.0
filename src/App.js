@@ -14,7 +14,7 @@ import Footer from '~/components/Footer';
 function App() {
   const [pokemons, setPokemons] = useState({
     previousPokemon: false,
-    currentPokemon: false,
+    currentPokemon: 'bulbasaur',
     nextPokemon: false,
   });
 

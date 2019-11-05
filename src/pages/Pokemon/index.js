@@ -25,9 +25,11 @@ import {
   PokemonInformationBox,
 } from './styles';
 
-function Pokemon({ match: { params } }) {
-  const { slug } = params;
-  const { setPokemons } = useContext(PokemonsContext);
+function Pokemon() {
+  const {
+    setPokemons,
+    pokemons: { currentPokemon },
+  } = useContext(PokemonsContext);
 
   const [previousPokemonData, setPreviousPokemonData] = useState(false);
   const [currentPokemonData, setCurrentPokemonData] = useState(false);
@@ -36,7 +38,7 @@ function Pokemon({ match: { params } }) {
 
   useEffect(() => {
     const getPokemon = async () => {
-      const current = await api.get(`pokemon/${slug}/`);
+      const current = await api.get(`pokemon/${currentPokemon}/`);
       const previous =
         current.data.id - 1 > 0
           ? await api.get(`pokemon/${current.data.id - 1}/`)
@@ -55,7 +57,7 @@ function Pokemon({ match: { params } }) {
     };
 
     getPokemon();
-  }, [setPokemons, slug]);
+  }, [currentPokemon, setPokemons]);
 
   const analisar = useCallback(async () => {
     if (currentPokemonData) {
@@ -79,7 +81,7 @@ function Pokemon({ match: { params } }) {
     <>
       {color && (
         <Container style={{ background: color }}>
-          <Header id={currentPokemonData.id} name={slug} />
+          <Header id={currentPokemonData.id} name={currentPokemonData.name} />
 
           <PageContent>
             <Region>
