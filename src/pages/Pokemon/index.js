@@ -89,6 +89,7 @@ function Pokemon() {
           'rgba(0,0,0,2)',
         ],
       });
+      document.getElementById('root').style.background = result[0].color;
       setColor(result[0].color);
     }
   }, [currentPokemonData]);
@@ -96,11 +97,10 @@ function Pokemon() {
   useEffect(() => {
     analisar();
   }, [analisar]);
-  console.tron.log(previousPokemonData);
   return (
     <Page>
       {color && (
-        <Container style={{ background: color }}>
+        <Container>
           <Header id={currentPokemonData.id} name={currentPokemonData.name} />
 
           <PageContent>
