@@ -15,9 +15,9 @@ function App() {
   const slug = history.location.pathname.replace('/', '');
 
   const [pokemons, setPokemons] = useState({
-    previousPokemon: false,
-    currentPokemon: slug || 'bulbasaur',
-    nextPokemon: false,
+    previousPokemon: {},
+    currentPokemon: { name: slug || 'charmander' },
+    nextPokemon: {},
   });
 
   return (

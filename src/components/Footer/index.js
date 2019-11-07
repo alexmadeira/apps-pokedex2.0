@@ -30,11 +30,11 @@ export default function Footer() {
 
   return (
     <Container>
-      {!!previousPokemon && (
+      {!!previousPokemon.name && (
         <button
           type="button"
           onClick={() => {
-            showPokemon(previousPokemon || '');
+            showPokemon(previousPokemon.name || '');
           }}
         >
           {previousPokemon}
@@ -50,11 +50,11 @@ export default function Footer() {
           <FaSearch />
         </button>
       </SearchForm>
-      {!!nextPokemon && (
+      {!!nextPokemon.name && (
         <button
           type="button"
           onClick={() => {
-            showPokemon(nextPokemon || '');
+            showPokemon(nextPokemon.name || '');
           }}
         >
           {nextPokemon}
