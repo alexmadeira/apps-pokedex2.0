@@ -1,8 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext } from 'react';
+
+import PokemonsContext from '~/contexts/PokemonsContext';
+
 import { Container } from './styles';
 
-function Header({ id, name }) {
+function Header() {
+  const {
+    pokemons: { currentPokemonData },
+  } = useContext(PokemonsContext);
+
+  const { id, name } = currentPokemonData;
   return (
     <Container>
       <p>#{`00${id}`.slice(-3)}</p>
@@ -11,8 +18,4 @@ function Header({ id, name }) {
   );
 }
 
-Header.propTypes = {
-  id: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-};
 export default Header;

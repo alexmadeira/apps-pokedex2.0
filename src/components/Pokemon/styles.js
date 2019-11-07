@@ -48,6 +48,6 @@ export const HidePokemon = styled.img`
 `;
 
 export const ShowPokemon = styled.img`
-  width: 70%;
+  height: 90vh;
   opacity: 1;
 `;

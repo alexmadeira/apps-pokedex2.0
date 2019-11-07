@@ -1,44 +1,52 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { ChangeBg } from '~/services/Pokemon';
+import { ChangeBg, FormatImageName } from '~/services/Pokemon';
+
+import Api from '~/services/Api';
 
 import PokemonsImage from '~/assets/pokemons';
 import PokemonsContext from '~/contexts/PokemonsContext';
 
-import {
-  Container,
-  PokemonList,
-  PreviousPokemon,
-  HidePokemon,
-  CurrentPokemon,
-  ShowPokemon,
-  NextPokemon,
-} from './styles';
+import { Container, PokemonList, CurrentPokemon, ShowPokemon } from './styles';
 
 export default function Pokemon() {
-  const [loadiBg, setLoadiBg] = useState(false);
+  const [loadingBg, setLoadingBg] = useState(false);
+  const [loadingCurrent, setLoadingCurrentBg] = useState(false);
   const { pokemons, setPokemons } = useContext(PokemonsContext);
+  const { find, currentPokemonData } = pokemons;
 
   useEffect(() => {
-    const changeBgColor = async () => {
-      await ChangeBg(PokemonsImage['805stakataka']);
-      setLoadiBg(true);
+    if (loadingCurrent) {
+      const changeBgColor = async () => {
+        await ChangeBg(PokemonsImage[currentPokemonData.imagFormat]);
+        setLoadingBg(true);
+      };
+      changeBgColor();
+    }
+  }, [currentPokemonData, loadingCurrent]);
+
+  useEffect(() => {
+    const getPokemon = async () => {
+      const { id, name } = currentPokemonData;
+
+      if (id !== find && name !== find) {
+        setLoadingCurrentBg(false);
+        const { data } = await Api.get(`pokemon/${find}/`);
+        data.imagFormat = FormatImageName(data);
+
+        setPokemons({ ...pokemons, currentPokemonData: data, find: data.id });
+        setLoadingCurrentBg(true);
+      }
     };
-    changeBgColor();
-  }, []);
-  console.tron.log(pokemons);
+    getPokemon();
+  }, [currentPokemonData, find, loadingCurrent, pokemons, setPokemons]);
+
   return (
     <Container>
-      {loadiBg && (
+      {loadingBg && loadingCurrent && (
         <PokemonList>
-          <PreviousPokemon>
-            <HidePokemon src={PokemonsImage['001bulbasaur']} />
-          </PreviousPokemon>
           <CurrentPokemon>
-            <ShowPokemon src={PokemonsImage['001bulbasaur']} />
+            <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} />
           </CurrentPokemon>
-          <NextPokemon>
-            <HidePokemon src={PokemonsImage['001bulbasaur']} />
-          </NextPokemon>
         </PokemonList>
       )}
     </Container>

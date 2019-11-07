@@ -34,7 +34,7 @@ body {
   max-width: 100vw;
   /* overflow-x: hidden; */
 }
-
+/*
 .page-enter {
   opacity: 0;
 }
@@ -48,6 +48,6 @@ body {
 .page-exit-active {
   opacity: 0;
   transition: opacity 800ms ease-in;
-}
+} */
 
 `;

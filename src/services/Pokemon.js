@@ -13,7 +13,7 @@ export const ChangeBg = async image => {
   return true;
 };
 
-export const formatImageName = pokemonData => {
+export const FormatImageName = pokemonData => {
   const { id, name } = pokemonData;
   const formartId = `00${id}`.slice(-3);
   const [formatName] = name.split('-');
@@ -21,4 +21,4 @@ export const formatImageName = pokemonData => {
   return imageName;
 };
 
-export default { ChangeBg, formatImageName };
+export default { ChangeBg, FormatImageName };

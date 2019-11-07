@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Colors, Spaces, Fonts } from '~/styles/Metrics';
 
 export const Page = styled.div`
-  position: absolute;
+  position: relative;
   left: 0;
   top: 0;
   width: 100%;

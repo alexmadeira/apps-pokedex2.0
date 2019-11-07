@@ -10,13 +10,13 @@ function Pokedex() {
   return (
     <Page>
       <Container>
-        <Header id={1} name="asdasd" />
+        <Header />
         <PageContent>
           <Region>
             <p>Region: Kanto</p>
           </Region>
           <Pokemon />
-          {/* <PokemonInformation /> */}
+          <PokemonInformation />
         </PageContent>
       </Container>
     </Page>

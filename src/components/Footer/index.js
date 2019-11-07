@@ -4,40 +4,41 @@ import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 import { Container, SearchForm } from './styles';
 
 import PokemonsContext from '~/contexts/PokemonsContext';
-import history from '~/services/History';
 
 export default function Footer() {
-  const {
-    pokemons: { previousPokemon, nextPokemon },
-    setPokemons,
-  } = useContext(PokemonsContext);
+  const { pokemons, setPokemons } = useContext(PokemonsContext);
+  const { find } = pokemons;
+
+  const previous = find - 1;
+  const next = find + 1;
 
   const [findPokemon, setFindPokemon] = useState('');
 
   function searchPokemon(e) {
     e.preventDefault();
-    setFindPokemon('');
-    history.push(`/${findPokemon}`);
+    setPokemons({
+      ...pokemons,
+      find: findPokemon,
+    });
   }
 
-  function showPokemon(pokemonName) {
+  function showPokemon(show) {
     setPokemons({
-      currentPokemon: pokemonName,
+      ...pokemons,
+      find: show,
     });
-
-    history.push(`/${pokemonName}`);
   }
 
   return (
     <Container>
-      {!!previousPokemon.name && (
+      {!!previous && (
         <button
           type="button"
           onClick={() => {
-            showPokemon(previousPokemon.name || '');
+            showPokemon(previous);
           }}
         >
-          {previousPokemon}
+          {previous}
           <FaChevronLeft />
         </button>
       )}
@@ -46,18 +47,18 @@ export default function Footer() {
           value={findPokemon}
           onChange={e => setFindPokemon(e.target.value)}
         />
-        <button type="button" onClick={e => searchPokemon(e)}>
+        <button type="button" onClick={findPokemon && (e => searchPokemon(e))}>
           <FaSearch />
         </button>
       </SearchForm>
-      {!!nextPokemon.name && (
+      {!!next && (
         <button
           type="button"
           onClick={() => {
-            showPokemon(nextPokemon.name || '');
+            showPokemon(next);
           }}
         >
-          {nextPokemon}
+          {next}
           <FaChevronRight />
         </button>
       )}
