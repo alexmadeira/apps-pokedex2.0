@@ -9,7 +9,8 @@ export const ChangeBg = async image => {
       'rgba(0,0,0,2)',
     ],
   });
-  document.getElementById('root').style.background = result[0].color;
+
+  document.getElementById('body').style.background = result[0].color;
   return true;
 };
 
