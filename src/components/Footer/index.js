@@ -18,7 +18,7 @@ export default function Footer() {
     e.preventDefault();
     setPokemons({
       ...pokemons,
-      find: findPokemon,
+      find: findPokemon.toLowerCase(),
     });
   }
 

@@ -6,7 +6,13 @@ import Api from '~/services/Api';
 import PokemonsImage from '~/assets/pokemons';
 import PokemonsContext from '~/contexts/PokemonsContext';
 
-import { Container, PokemonList, CurrentPokemon, ShowPokemon } from './styles';
+import {
+  Container,
+  PokemonList,
+  CurrentPokemon,
+  JpName,
+  ShowPokemon,
+} from './styles';
 
 export default function Pokemon() {
   const [loadingBg, setLoadingBg] = useState(false);
@@ -31,7 +37,12 @@ export default function Pokemon() {
       if (id !== find && name !== find) {
         setLoadingCurrentBg(false);
         const { data } = await Api.get(`pokemon/${find}/`);
+        const {
+          data: { names },
+        } = await Api.get(`pokemon-species/${find}/`);
+
         data.imagFormat = FormatImageName(data);
+        [, data.jpName] = names;
 
         setPokemons({ ...pokemons, currentPokemonData: data, find: data.id });
         setLoadingCurrentBg(true);
@@ -39,13 +50,14 @@ export default function Pokemon() {
     };
     getPokemon();
   }, [currentPokemonData, find, loadingCurrent, pokemons, setPokemons]);
-
+  console.tron.log(currentPokemonData);
   return (
     <Container>
       {loadingBg && loadingCurrent && (
         <PokemonList>
           <CurrentPokemon>
-            <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} />
+            <JpName>{currentPokemonData.jpName.name}</JpName>
+            {/* <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} /> */}
           </CurrentPokemon>
         </PokemonList>
       )}

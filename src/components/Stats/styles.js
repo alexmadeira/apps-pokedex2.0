@@ -11,7 +11,11 @@ export const Container = styled.div`
     height: 100%;
     width: 4px;
     border-radius: 2px;
-    background: ${Colors.LightShadow};
+    background: linear-gradient(
+      to bottom,
+      ${Colors.White} 0%,
+      ${Colors.LightShadow} 100%
+    );
     position: absolute;
     left: 0;
     top: 0;
@@ -25,6 +29,7 @@ export const StatsList = styled.ul`
   flex-wrap: wrap;
   list-style: none;
 `;
+
 export const StatItem = styled.li`
   background: linear-gradient(
     to bottom,
@@ -35,12 +40,12 @@ export const StatItem = styled.li`
   margin-top: 0;
   margin-bottom: 14px;
   margin-right: 10px;
-  color: rgba(0, 0, 0, 0.65);
+  color: ${Colors.Black};
   font-weight: 800;
   letter-spacing: 1px;
   border-radius: 8px;
   display: inline-block;
   font-size: 12px;
   text-transform: uppercase;
-  box-shadow: 0 20px 25px -10px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 25px -10px ${Colors.DarkShadow};
 `;

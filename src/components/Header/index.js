@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import PokemonsContext from '~/contexts/PokemonsContext';
 
-import { Container } from './styles';
+import { Container, Title, Id } from './styles';
 
 function Header() {
   const {
@@ -12,8 +12,8 @@ function Header() {
   const { id, name } = currentPokemonData;
   return (
     <Container>
-      <p>#{`00${id}`.slice(-3)}</p>
-      <h1>{name}</h1>
+      <Id>#{`00${id}`.slice(-3)}</Id>
+      <Title>{name}</Title>
     </Container>
   );
 }
