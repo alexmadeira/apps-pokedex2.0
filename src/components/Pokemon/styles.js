@@ -36,13 +36,25 @@ export const CurrentPokemon = styled.li`
 
 export const JpName = styled.p`
   position: absolute;
-  transform: translate(-40%, 10%);
+  transform: translate(-40%, 50%);
   font-size: calc(${Fonts.sizes.Bigger} * 3);
   font-weight: 600;
   word-break: keep-all;
   word-wrap: normal;
   opacity: 0.3;
   color: ${Colors.Balck};
+`;
+
+export const Sizes = styled.div`
+  position: absolute;
+  left: 120px;
+  bottom: 50px;
+  p {
+    text-shadow: 0 0 12px ${Colors.DarkShadow};
+    color: #ffffff;
+    font-size: ${Fonts.sizes.Middle};
+    font-weight: 600;
+  }
 `;
 
 export const NextPokemon = styled.li`

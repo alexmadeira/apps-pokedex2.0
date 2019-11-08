@@ -11,6 +11,7 @@ import {
   PokemonList,
   CurrentPokemon,
   JpName,
+  Sizes,
   ShowPokemon,
 } from './styles';
 
@@ -57,6 +58,14 @@ export default function Pokemon() {
         <PokemonList>
           <CurrentPokemon>
             <JpName>{currentPokemonData.jpName.name}</JpName>
+            <Sizes>
+              <p>
+                Height: <strong>{currentPokemonData.height / 10} M</strong>
+              </p>
+              <p>
+                Weigth: <strong>{currentPokemonData.weight / 10} kg</strong>
+              </p>
+            </Sizes>
             <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} />
           </CurrentPokemon>
         </PokemonList>
