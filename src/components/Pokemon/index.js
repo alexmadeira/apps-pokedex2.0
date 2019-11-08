@@ -50,14 +50,14 @@ export default function Pokemon() {
     };
     getPokemon();
   }, [currentPokemonData, find, loadingCurrent, pokemons, setPokemons]);
-  console.tron.log(currentPokemonData);
+
   return (
     <Container>
       {loadingBg && loadingCurrent && (
         <PokemonList>
           <CurrentPokemon>
             <JpName>{currentPokemonData.jpName.name}</JpName>
-            {/* <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} /> */}
+            <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} />
           </CurrentPokemon>
         </PokemonList>
       )}
