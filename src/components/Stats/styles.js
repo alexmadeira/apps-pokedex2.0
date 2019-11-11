@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: flex;
   width: 100%;
   position: relative;
+
   padding-left: ${Spaces.BasePadding};
   &::before {
     content: '';
@@ -19,6 +20,14 @@ export const Container = styled.div`
     position: absolute;
     left: 0;
     top: 0;
+  }
+  @media (max-width: 720px) {
+    flex: 4;
+  }
+  @media (max-width: 600px) {
+    &::before {
+      display: none;
+    }
   }
 `;
 

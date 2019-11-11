@@ -9,13 +9,23 @@ export const Container = styled.div`
   position: absolute;
 `;
 
-export const PokemonList = styled.ul`
+export const PokemonBox = styled.div`
   list-style: none;
   display: flex;
   flex: 1;
   height: 100%;
-  width: 90vw;
+  width: 85%;
   position: relative;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+  @media (max-width: 900px) {
+    justify-content: flex-start;
+  }
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
 `;
 
 export const PreviousPokemon = styled.li`
@@ -26,7 +36,7 @@ export const PreviousPokemon = styled.li`
   padding-bottom: calc(${Spaces.BasePadding} * 4);
 `;
 
-export const CurrentPokemon = styled.li`
+export const CurrentPokemon = styled.div`
   flex: 5;
   display: flex;
   justify-content: center;
@@ -43,6 +53,9 @@ export const JpName = styled.p`
   word-wrap: normal;
   opacity: 0.3;
   color: ${Colors.Balck};
+  @media (max-width: 960px) {
+    display: none;
+  }
 `;
 
 export const Sizes = styled.div`
@@ -54,6 +67,15 @@ export const Sizes = styled.div`
     color: #ffffff;
     font-size: ${Fonts.sizes.Middle};
     font-weight: 600;
+  }
+  @media (max-width: 720px) {
+    left: initial;
+    bottom: initial;
+    right: 0px;
+    top: 50%;
+  }
+  @media (max-width: 600px) {
+    top: 50px;
   }
 `;
 
@@ -72,6 +94,14 @@ export const HidePokemon = styled.img`
 `;
 
 export const ShowPokemon = styled.img`
-  height: 90vh;
   opacity: 1;
+  height: 90vh;
+  @media (max-width: 900px) {
+    height: initial;
+    width: 60%;
+  }
+  @media (max-width: 600px) {
+    width: 80%;
+    margin-bottom: calc(${Spaces.BaseMargin} * 10);
+  }
 `;

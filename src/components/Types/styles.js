@@ -4,6 +4,9 @@ import { Spaces, Colors } from '~/styles/Metrics';
 export const Container = styled.div`
   width: 100%;
   display: flex;
+  @media (max-width: 720px) {
+    flex: 1;
+  }
 `;
 export const TypesList = styled.ul`
   width: 100%;

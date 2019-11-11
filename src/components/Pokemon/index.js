@@ -6,14 +6,7 @@ import Api from '~/services/Api';
 import PokemonsImage from '~/assets/pokemons';
 import PokemonsContext from '~/contexts/PokemonsContext';
 
-import {
-  Container,
-  PokemonList,
-  CurrentPokemon,
-  JpName,
-  Sizes,
-  ShowPokemon,
-} from './styles';
+import { Container, PokemonBox, JpName, Sizes, ShowPokemon } from './styles';
 
 export default function Pokemon() {
   const [loadingBg, setLoadingBg] = useState(false);
@@ -55,20 +48,18 @@ export default function Pokemon() {
   return (
     <Container>
       {loadingBg && loadingCurrent && (
-        <PokemonList>
-          <CurrentPokemon>
-            <JpName>{currentPokemonData.jpName.name}</JpName>
-            <Sizes>
-              <p>
-                Height: <strong>{currentPokemonData.height / 10} M</strong>
-              </p>
-              <p>
-                Weigth: <strong>{currentPokemonData.weight / 10} kg</strong>
-              </p>
-            </Sizes>
-            <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} />
-          </CurrentPokemon>
-        </PokemonList>
+        <PokemonBox>
+          <JpName>{currentPokemonData.jpName.name}</JpName>
+          <Sizes>
+            <p>
+              Height: <strong>{currentPokemonData.height / 10} M</strong>
+            </p>
+            <p>
+              Weigth: <strong>{currentPokemonData.weight / 10} kg</strong>
+            </p>
+          </Sizes>
+          <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} />
+        </PokemonBox>
       )}
     </Container>
   );

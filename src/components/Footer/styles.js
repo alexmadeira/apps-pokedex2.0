@@ -10,6 +10,9 @@ export const Container = styled.div`
   justify-content: center;
   width: 100%;
   margin-bottom: ${Spaces.BaseMargin};
+  @media (max-width: 600px) {
+    justify-content: space-between;
+  }
 `;
 
 export const SearchForm = styled.form`
@@ -41,6 +44,9 @@ export const SearchForm = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+  @media (max-width: 600px) {
+    margin: 0;
   }
 `;
 
