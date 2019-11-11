@@ -77,6 +77,9 @@ export const Sizes = styled.div`
   @media (max-width: 600px) {
     top: 50px;
   }
+  @media (max-width: 400px) {
+    display: none;
+  }
 `;
 
 export const NextPokemon = styled.li`
@@ -102,6 +105,8 @@ export const ShowPokemon = styled.img`
   }
   @media (max-width: 600px) {
     width: 80%;
-    margin-bottom: calc(${Spaces.BaseMargin} * 10);
+    margin-top: calc(${Spaces.BaseMargin} * 8);
+
+    align-self: flex-start;
   }
 `;
