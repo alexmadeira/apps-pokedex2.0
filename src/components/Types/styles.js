@@ -14,6 +14,9 @@ export const TypesList = styled.ul`
   display: flex;
   flex-direction: row;
   list-style: none;
+  @media (max-width: 600px) {
+    justify-content: center;
+  }
 `;
 export const Type = styled.li`
   img {

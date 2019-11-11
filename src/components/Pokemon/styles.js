@@ -7,6 +7,10 @@ export const Container = styled.div`
   height: 100%;
   width: 100%;
   position: absolute;
+  @media (max-width: 500px) {
+    position: relative;
+    height: initial;
+  }
 `;
 
 export const PokemonBox = styled.div`
@@ -75,7 +79,7 @@ export const Sizes = styled.div`
     top: 50%;
   }
   @media (max-width: 600px) {
-    top: 50px;
+    top: -60px;
   }
   @media (max-width: 400px) {
     display: none;
@@ -106,7 +110,10 @@ export const ShowPokemon = styled.img`
   @media (max-width: 600px) {
     width: 80%;
     margin-top: calc(${Spaces.BaseMargin} * 8);
-
     align-self: flex-start;
+  }
+
+  @media (max-width: 500px) {
+    margin: 0;
   }
 `;

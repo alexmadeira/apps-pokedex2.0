@@ -29,6 +29,12 @@ export const PageContent = styled.div`
   width: 100%;
   justify-content: flex-end;
   align-items: center;
+  @media (max-width: 500px) {
+    position: relative;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
 `;
 
 export const Region = styled.div`

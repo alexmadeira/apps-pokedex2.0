@@ -20,9 +20,6 @@ body,
   justify-content:space-between;
   flex:1;
   z-index: 1;
-  @media (max-width: 600px) {
-    height:850px;
-  }
 }
 body, input, button{
   font-family: 'Nunito', sans-serif;
