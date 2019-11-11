@@ -6,10 +6,7 @@ export const Page = styled.div`
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
-  @media (max-width: 500px) {
-    height: initial;
-  }
+  flex: 1;
 `;
 export const Container = styled.div`
   height: 100%;
@@ -17,8 +14,8 @@ export const Container = styled.div`
   left: 0;
   top: 0;
   width: 100%;
+
   @media (max-width: 500px) {
-    height: initial;
     position: relative;
   }
 `;

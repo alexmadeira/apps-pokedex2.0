@@ -6,6 +6,9 @@ export const Container = styled.div`
   position: relative;
   margin-left: calc(${Spaces.BaseMargin} * 4);
   margin-top: calc(${Spaces.BaseMargin} * 2);
+  @media (max-width: 500px) {
+    margin-top: 0;
+  }
 `;
 
 export const Id = styled.p`

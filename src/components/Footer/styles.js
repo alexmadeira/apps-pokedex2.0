@@ -3,13 +3,13 @@ import { Spaces, Colors, Fonts } from '~/styles/Metrics';
 
 export const Container = styled.div`
   display: flex;
-  position: relative;
   z-index: 5;
-  justify-self: flex-end;
   align-self: center;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  margin-bottom: ${Spaces.BaseMargin};
+  padding-bottom: ${Spaces.BasePadding};
+
   @media (max-width: 600px) {
     justify-content: space-between;
   }
@@ -19,7 +19,6 @@ export const SearchForm = styled.form`
   display: flex;
   justify-content: space-around;
   align-self: center;
-
   margin: 0 calc(${Spaces.BaseMargin} * 8);
   input {
     border-radius: 5px;
