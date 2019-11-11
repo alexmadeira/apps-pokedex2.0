@@ -27,7 +27,7 @@ export const PageContent = styled.div`
   top: 0;
   height: 100%;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 `;
 
@@ -36,8 +36,12 @@ export const Region = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  align-self: flex-end;
-  justify-self: flex-end;
+  align-self: center;
+  justify-self: center;
+  position: fixed;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
   padding: ${Spaces.BasePadding};
   z-index: 2;
   p {
