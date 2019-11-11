@@ -6,7 +6,7 @@ export const Page = styled.div`
   left: 0;
   top: 0;
   width: 100%;
-  height: 100%;
+  min-height: 100%;
 `;
 export const Container = styled.div`
   height: 100%;
