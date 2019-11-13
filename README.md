@@ -6,6 +6,8 @@ Um projeto que desenvolvi para passar o tempo e me divertir
 
 Estas instruções fornecerão uma cópia do projeto em execução na sua máquina local para fins de teste.
 Este projeto foi desenvolvido utlizando 
+
+
 - [ReactJs](https://github.com/facebook/react/ "React js")
 - [PokeApi](https://github.com/PokeAPI/pokeapi "PokeApi") 
 
