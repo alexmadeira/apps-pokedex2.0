@@ -21,18 +21,18 @@ npm  ou yarn
 ```
 1. git clone git@bitbucket.org:alexmadeira5/pokedex2.0.git
 2. cd pokedex2.0/
-3.  yarn ou npm install
-4.  yarn start ou npm run start
+3. yarn ou npm install
+4. yarn start ou npm run start
 ```
 O projeto vai abrir altomaticamente em [http://localhost:3000/](http://localhost:3000/ "http://localhost:3000/")
 
-##Padronização de código
+## Padronização de código
 
-no projeto utilozo
+no projeto utilizo
 ````
-Prettierrc
-Editorconfig
-Eslint
+1. Prettierrc
+2. Editorconfig
+3. Eslint
 ````
 Seguindo a style guide do [Airbnb](https://github.com/airbnb/javascript "Airbnb").
 
