@@ -6,27 +6,21 @@ import { Container, SearchForm, Nav, Next } from './styles';
 import PokemonsContext from '~/contexts/PokemonsContext';
 
 export default function Footer() {
-  const { pokemons, setPokemons } = useContext(PokemonsContext);
-  const { find } = pokemons;
+  const { currentPokemon, setCurrentPokemon } = useContext(PokemonsContext);
+  const { find, id } = currentPokemon;
 
-  const previous = find - 1;
-  const next = find + 1;
+  const previous = (find || id) - 1;
+  const next = (find || id) + 1;
 
   const [findPokemon, setFindPokemon] = useState('');
 
   function searchPokemon(e) {
     e.preventDefault();
-    setPokemons({
-      ...pokemons,
-      find: findPokemon.toLowerCase(),
-    });
+    setCurrentPokemon({ ...currentPokemon, find: findPokemon.toLowerCase() });
   }
 
   function showPokemon(show) {
-    setPokemons({
-      ...pokemons,
-      find: show,
-    });
+    setCurrentPokemon({ ...currentPokemon, find: show });
   }
 
   return (

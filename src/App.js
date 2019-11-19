@@ -11,17 +11,16 @@ import Routes from '~/routes';
 import Footer from '~/components/Footer';
 
 function App() {
-  const [pokemons, setPokemons] = useState({
+  const [currentPokemon, setCurrentPokemon] = useState({
     find: 1,
-    previousPokemonData: {},
-    currentPokemonData: { types: [], stats: [] },
-    nextPokemonData: {},
+    types: [],
+    stats: [],
   });
 
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <PokemonsProvider value={{ pokemons, setPokemons }}>
+      <PokemonsProvider value={{ currentPokemon, setCurrentPokemon }}>
         <Routes />
         <Footer />
       </PokemonsProvider>

@@ -1,66 +1,39 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { ChangeBg, FormatImageName } from '~/services/Pokemon';
+import React from 'react';
 
-import Api from '~/services/Api';
+import { usePokemon } from '~/services/hooks/Pokemon';
+import { changeBG } from '~/services/hooks/Background';
 
 import PokemonsImage from '~/assets/pokemons';
-import PokemonsContext from '~/contexts/PokemonsContext';
 
 import { Container, PokemonBox, JpName, Sizes, ShowPokemon } from './styles';
 
 export default function Pokemon() {
-  const [loadingBg, setLoadingBg] = useState(false);
-  const [loadingCurrent, setLoadingCurrentBg] = useState(false);
-  const { pokemons, setPokemons } = useContext(PokemonsContext);
-  const { find, currentPokemonData } = pokemons;
+  const pokemon = usePokemon();
 
-  useEffect(() => {
-    if (loadingCurrent) {
-      const changeBgColor = async () => {
-        await ChangeBg(PokemonsImage[currentPokemonData.imagFormat]);
-        setLoadingBg(true);
-      };
-      changeBgColor();
-    }
-  }, [currentPokemonData, loadingCurrent]);
+  if (!pokemon) {
+    return <p>Carregando...</p>;
+  }
 
-  useEffect(() => {
-    const getPokemon = async () => {
-      const { id, name } = currentPokemonData;
+  const { specie, height, weight, imagFormat } = pokemon;
+  const [, jpName] = specie.names;
 
-      if (id !== find && name !== find) {
-        setLoadingCurrentBg(false);
-        const { data } = await Api.get(`pokemon/${find}/`);
-        const {
-          data: { names },
-        } = await Api.get(`pokemon-species/${find}/`);
-
-        data.imagFormat = FormatImageName(data);
-        [, data.jpName] = names;
-
-        setPokemons({ ...pokemons, currentPokemonData: data, find: data.id });
-        setLoadingCurrentBg(true);
-      }
-    };
-    getPokemon();
-  }, [currentPokemonData, find, loadingCurrent, pokemons, setPokemons]);
+  changeBG(imagFormat);
 
   return (
     <Container>
-      {loadingBg && loadingCurrent && (
-        <PokemonBox>
-          <JpName>{currentPokemonData.jpName.name}</JpName>
-          <Sizes>
-            <p>
-              Height: <strong>{currentPokemonData.height / 10} M</strong>
-            </p>
-            <p>
-              Weigth: <strong>{currentPokemonData.weight / 10} kg</strong>
-            </p>
-          </Sizes>
-          <ShowPokemon src={PokemonsImage[currentPokemonData.imagFormat]} />
-        </PokemonBox>
-      )}
+      <PokemonBox>
+        <JpName>{jpName.name}</JpName>
+        <Sizes>
+          <p>
+            Height: <strong>{height / 10} M</strong>
+          </p>
+          <p>
+            Weigth: <strong>{weight / 10} kg</strong>
+          </p>
+        </Sizes>
+        <ShowPokemon src={PokemonsImage[imagFormat]} />
+      </PokemonBox>
+      )
     </Container>
   );
 }

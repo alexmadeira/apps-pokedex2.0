@@ -8,11 +8,9 @@ import Stats from '~/components/Stats';
 import { Container, Title } from './styles';
 
 export default function PokemonInformation() {
-  const {
-    pokemons: { currentPokemonData },
-  } = useContext(PokemonsContext);
+  const { currentPokemon } = useContext(PokemonsContext);
 
-  const { types, stats } = currentPokemonData;
+  const { types, stats } = currentPokemon;
 
   return (
     <Container>

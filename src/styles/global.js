@@ -32,6 +32,7 @@ body {
   text-rendering: optimizeLegibility !important;
   background: #fff;
   max-width: 100vw;
+  transition:background linear 500ms;
   /* overflow-x: hidden; */
 }
 /*

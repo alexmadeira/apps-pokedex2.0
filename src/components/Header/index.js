@@ -5,11 +5,9 @@ import PokemonsContext from '~/contexts/PokemonsContext';
 import { Container, Title, Id } from './styles';
 
 function Header() {
-  const {
-    pokemons: { currentPokemonData },
-  } = useContext(PokemonsContext);
+  const { currentPokemon } = useContext(PokemonsContext);
 
-  const { id, name } = currentPokemonData;
+  const { id, name } = currentPokemon;
   return (
     <Container>
       <Id>#{`00${id}`.slice(-3)}</Id>
