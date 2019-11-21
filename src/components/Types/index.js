@@ -10,7 +10,7 @@ function Types({ typeList }) {
     <Container>
       <TypesList>
         {typeList.map(({ type }) => (
-          <Type>
+          <Type key={type.name}>
             <img src={TypesImage[type.name]} alt={type.name} />
           </Type>
         ))}
@@ -20,7 +20,7 @@ function Types({ typeList }) {
 }
 
 Types.propTypes = {
-  typeList: PropTypes.shape().isRequired,
+  typeList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 export default Types;
