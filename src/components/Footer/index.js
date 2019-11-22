@@ -1,7 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { FaSearch, FaChevronRight, FaChevronLeft } from 'react-icons/fa';
 
-import { Container, SearchForm, Nav, Next } from './styles';
+import { Container, SearchForm } from './styles';
+
+import Nav from '~/components/Nav';
 
 import PokemonsContext from '~/contexts/PokemonsContext';
 
@@ -19,19 +21,9 @@ export default function Footer() {
     setCurrentPokemon({ ...currentPokemon, find: findPokemon.toLowerCase() });
   }
 
-  function showPokemon(show) {
-    setCurrentPokemon({ ...currentPokemon, find: show });
-  }
-
   return (
     <Container>
-      <Nav
-        className={!previous && 'disabled'}
-        type="button"
-        onClick={() => {
-          showPokemon(previous);
-        }}
-      >
+      <Nav to={previous}>
         <FaChevronLeft />
       </Nav>
       <SearchForm onSubmit={e => searchPokemon(e)}>
@@ -43,15 +35,9 @@ export default function Footer() {
           <FaSearch />
         </button>
       </SearchForm>
-      <Next
-        className={!next && 'disabled'}
-        type="button"
-        onClick={() => {
-          showPokemon(next);
-        }}
-      >
+      <Nav to={next}>
         <FaChevronRight />
-      </Next>
+      </Nav>
     </Container>
   );
 }

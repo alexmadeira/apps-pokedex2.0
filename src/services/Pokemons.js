@@ -15,6 +15,7 @@ export const findAll = async () => {
 };
 
 export const findPokemon = async pokemon => {
+  if (!pokemon) return false;
   const {
     data,
     data: { id },

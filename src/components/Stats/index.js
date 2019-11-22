@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Container, StatsList, StatItem } from './styles';
 
 function Stats({ statsList }) {
-  console.tron.log(statsList);
   return (
     <Container>
       <StatsList>
