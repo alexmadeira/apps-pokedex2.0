@@ -13,8 +13,7 @@ import Footer from '~/components/Footer';
 function App() {
   const [currentPokemon, setCurrentPokemon] = useState({
     find: 1,
-    types: [],
-    stats: [],
+    loading: true,
   });
 
   return (

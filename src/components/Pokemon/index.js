@@ -8,13 +8,12 @@ import PokemonsImage from '~/assets/pokemons';
 import { Container, PokemonBox, JpName, Sizes, ShowPokemon } from './styles';
 
 export default function Pokemon() {
-  const pokemon = usePokemon();
+  const { specie, height, weight, imagFormat, loading } = usePokemon();
 
-  if (!pokemon) {
+  if (!loading) {
     return <p>Carregando...</p>;
   }
 
-  const { specie, height, weight, imagFormat } = pokemon;
   const [, jpName] = specie.names;
 
   changeBG(imagFormat);

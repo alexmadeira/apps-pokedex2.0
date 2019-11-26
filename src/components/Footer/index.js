@@ -1,20 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa';
+
+import { usePokemon } from '~/services/hooks/Pokemon';
 
 import { Container } from './styles';
 
 import Nav from '~/components/Nav';
 import Search from '~/components/Search';
 
-import PokemonsContext from '~/contexts/PokemonsContext';
-
 export default function Footer() {
-  const {
-    currentPokemon: { find, id },
-  } = useContext(PokemonsContext);
+  const { id } = usePokemon();
 
-  const previous = (find || id) - 1;
-  const next = (find || id) + 1;
+  const previous = id - 1;
+  const next = id + 1;
 
   return (
     <Container>

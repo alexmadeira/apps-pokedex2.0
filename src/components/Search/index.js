@@ -1,26 +1,26 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 
-import PokemonsContext from '~/contexts/PokemonsContext';
+import { useFindPokemon } from '~/services/hooks/Pokemon';
 
 import { Container } from './styles';
 
 export default function Search() {
-  const { currentPokemon, setCurrentPokemon } = useContext(PokemonsContext);
   const [findPokemon, setFindPokemon] = useState('');
+  const searchPokemon = useFindPokemon();
 
-  const searchPokemon = e => {
+  const handlerPokemon = e => {
     e.preventDefault();
-    setCurrentPokemon({ ...currentPokemon, find: findPokemon.toLowerCase() });
+    searchPokemon(findPokemon);
   };
 
   return (
-    <Container onSubmit={e => searchPokemon(e)}>
+    <Container onSubmit={e => handlerPokemon(e)}>
       <input
         value={findPokemon}
         onChange={e => setFindPokemon(e.target.value)}
       />
-      <button type="button" onClick={findPokemon && (e => searchPokemon(e))}>
+      <button type="button" onClick={e => handlerPokemon(e)}>
         <FaSearch />
       </button>
     </Container>

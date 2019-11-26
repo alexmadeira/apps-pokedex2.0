@@ -5,26 +5,38 @@ import { FormatImageName } from '~/services/Utils';
 import PokemonsContext from '~/contexts/PokemonsContext';
 
 export const usePokemon = () => {
-  const [pokemon, setPokemon] = useState();
+  const [pokemon, setPokemon] = useState({});
   const {
-    currentPokemon: { find },
+    currentPokemon: { find, loading },
     setCurrentPokemon,
   } = useContext(PokemonsContext);
 
   useEffect(() => {
-    if (find) {
+    if (loading) {
       const loadingPokemon = async () => {
         const data = await findPokemon(find);
 
         data.imagFormat = FormatImageName(data);
 
-        setPokemon(data);
+        setPokemon({ ...data, loading });
         setCurrentPokemon(data);
       };
 
       loadingPokemon();
     }
-  }, [find, setCurrentPokemon]);
+  }, [find, loading, setCurrentPokemon]);
 
   return pokemon;
+};
+
+export const useFindPokemon = () => {
+  const { currentPokemon, setCurrentPokemon } = useContext(PokemonsContext);
+
+  return find => {
+    setCurrentPokemon({
+      ...currentPokemon,
+      find: find.toLowerCase(),
+      loading: true,
+    });
+  };
 };

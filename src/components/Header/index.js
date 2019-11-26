@@ -1,13 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import PokemonsContext from '~/contexts/PokemonsContext';
+import { usePokemon } from '~/services/hooks/Pokemon';
 
 import { Container, Title, Id } from './styles';
 
 function Header() {
-  const { currentPokemon } = useContext(PokemonsContext);
-
-  const { id, name } = currentPokemon;
+  const { id, name } = usePokemon();
   return (
     <Container>
       <Id>#{`00${id}`.slice(-3)}</Id>

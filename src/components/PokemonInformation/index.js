@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import PokemonsContext from '~/contexts/PokemonsContext';
+import { usePokemon } from '~/services/hooks/Pokemon';
 
 import Types from '~/components/Types';
 import Stats from '~/components/Stats';
@@ -8,15 +8,13 @@ import Stats from '~/components/Stats';
 import { Container, Title } from './styles';
 
 export default function PokemonInformation() {
-  const { currentPokemon } = useContext(PokemonsContext);
-
-  const { types, stats } = currentPokemon;
+  const { types, stats } = usePokemon();
 
   return (
     <Container>
-      <Types typeList={types} />
+      <Types typeList={types || []} />
       <Title>Stats:</Title>
-      <Stats statsList={stats} />
+      <Stats statsList={stats || []} />
     </Container>
   );
 }
