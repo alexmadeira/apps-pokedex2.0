@@ -18,6 +18,7 @@ export default function Search() {
     <Container onSubmit={e => handlerPokemon(e)}>
       <input
         value={findPokemon}
+        placeholder="Search by Nº or Name"
         onChange={e => setFindPokemon(e.target.value)}
       />
       <button type="button" onClick={e => handlerPokemon(e)}>
