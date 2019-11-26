@@ -3,6 +3,8 @@ import { BrowserRouter } from 'react-router-dom';
 
 import GlobalStyle from '~/styles/global';
 
+import BG from '~/services/Background';
+
 import '~/config/ReactotronConfig';
 
 import { PokemonsProvider } from '~/contexts/PokemonsContext';
@@ -20,6 +22,7 @@ function App() {
     <BrowserRouter>
       <GlobalStyle />
       <PokemonsProvider value={{ currentPokemon, setCurrentPokemon }}>
+        <BG />
         <Routes />
         <Footer />
       </PokemonsProvider>

@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { usePokemon } from '~/services/hooks/Pokemon';
-import { changeBG } from '~/services/hooks/Background';
 
 import PokemonImage from '~/components/PokemonImage';
 
@@ -15,8 +14,6 @@ export default function Pokemon() {
   }
 
   const [, jpName] = specie.names;
-
-  changeBG(imagFormat);
 
   return (
     <Container>
