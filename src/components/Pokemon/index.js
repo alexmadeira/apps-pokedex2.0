@@ -3,9 +3,9 @@ import React from 'react';
 import { usePokemon } from '~/services/hooks/Pokemon';
 import { changeBG } from '~/services/hooks/Background';
 
-import PokemonsImage from '~/assets/pokemons';
+import PokemonImage from '~/components/PokemonImage';
 
-import { Container, PokemonBox, JpName, Sizes, ShowPokemon } from './styles';
+import { Container, PokemonBox, JpName, Sizes } from './styles';
 
 export default function Pokemon() {
   const { specie, height, weight, imagFormat, loading } = usePokemon();
@@ -30,7 +30,7 @@ export default function Pokemon() {
             Weigth: <strong>{weight / 10} kg</strong>
           </p>
         </Sizes>
-        <ShowPokemon src={PokemonsImage[imagFormat]} />
+        <PokemonImage src={imagFormat} />
       </PokemonBox>
       )
     </Container>

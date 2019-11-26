@@ -85,35 +85,3 @@ export const Sizes = styled.div`
     display: none;
   }
 `;
-
-export const NextPokemon = styled.li`
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  padding-bottom: calc(${Spaces.BasePadding} * 4);
-`;
-
-export const HidePokemon = styled.img`
-  filter: brightness(0);
-  opacity: 0.1;
-  max-width: 100%;
-`;
-
-export const ShowPokemon = styled.img`
-  opacity: 1;
-  height: 90vh;
-  @media (max-width: 900px) {
-    height: initial;
-    width: 60%;
-  }
-  @media (max-width: 600px) {
-    width: 80%;
-    margin-top: calc(${Spaces.BaseMargin} * 8);
-    align-self: flex-start;
-  }
-
-  @media (max-width: 500px) {
-    margin: 0;
-  }
-`;
