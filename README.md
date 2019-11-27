@@ -1,6 +1,7 @@
-# Pokedex 2.0 
+# Pokedex 2.0  [![Netlify Status](https://api.netlify.com/api/v1/badges/919cf1fe-b237-4b3e-a045-7b551e4a4af3/deploy-status)](https://app.netlify.com/sites/elated-babbage-b8786b/deploys)
 
 Um projeto que desenvolvi para passar o tempo e me divertir 
+
 
 ## Começando
 
