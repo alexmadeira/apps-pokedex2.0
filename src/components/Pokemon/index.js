@@ -3,22 +3,16 @@ import React from 'react';
 import { usePokemon } from '~/services/hooks/Pokemon';
 
 import PokemonImage from '~/components/PokemonImage';
+import InternationalName from '~/components/InternationalName';
 
-import { Container, PokemonBox, JpName, Sizes } from './styles';
+import { Container, PokemonBox, Sizes } from './styles';
 
 export default function Pokemon() {
-  const { specie, height, weight, imagFormat, loading } = usePokemon();
-
-  if (!loading) {
-    return <p>Carregando...</p>;
-  }
-
-  const [, jpName] = specie.names;
-
+  const { specie, height, weight, imagFormat } = usePokemon();
   return (
     <Container>
       <PokemonBox>
-        <JpName>{jpName.name}</JpName>
+        <InternationalName specie={specie} language="ja" />
         <Sizes>
           <p>
             Height: <strong>{height / 10} M</strong>

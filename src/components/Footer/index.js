@@ -11,16 +11,13 @@ import Search from '~/components/Search';
 export default function Footer() {
   const { id } = usePokemon();
 
-  const previous = id - 1;
-  const next = id + 1;
-
   return (
     <Container>
-      <Nav to={previous}>
+      <Nav to={id - 1}>
         <FaChevronLeft />
       </Nav>
       <Search />
-      <Nav to={next}>
+      <Nav to={id + 1}>
         <FaChevronRight />
       </Nav>
     </Container>

@@ -23,4 +23,5 @@ Nav.propTypes = {
     .isRequired,
   to: PropTypes.number.isRequired,
 };
+
 export default Nav;
