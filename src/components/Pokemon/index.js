@@ -23,7 +23,6 @@ export default function Pokemon() {
         </Sizes>
         <PokemonImage src={imagFormat} />
       </PokemonBox>
-      )
     </Container>
   );
 }
