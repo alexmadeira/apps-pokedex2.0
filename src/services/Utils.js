@@ -1,16 +1,8 @@
-import analyze from 'rgbaster';
+import getColors from 'get-image-colors';
 
 export const ChangeBg = async image => {
-  const result = await analyze(image, {
-    ignore: [
-      'rgb(255,255,255)',
-      'rgb(0,0,0)',
-      'rgba(0,0,0,1)',
-      'rgba(0,0,0,2)',
-    ],
-  });
-
-  document.getElementById('body').style.background = result[0].color;
+  const result = await getColors(image);
+  document.getElementById('body').style.background = result[0].hex();
   return true;
 };
 
