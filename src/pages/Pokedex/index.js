@@ -3,8 +3,9 @@ import React from 'react';
 import Header from '~/components/Header';
 import Pokemon from '~/components/Pokemon';
 import PokemonInformation from '~/components/PokemonInformation';
+import Region from '~/components/Region';
 
-import { Page, Container, PageContent, Region } from './styles';
+import { Page, Container, PageContent } from './styles';
 
 function Pokedex() {
   return (
@@ -12,9 +13,7 @@ function Pokedex() {
       <Container>
         <Header />
         <PageContent>
-          <Region>
-            <p>Region: Kanto</p>
-          </Region>
+          <Region />
           <Pokemon />
           <PokemonInformation />
         </PageContent>
