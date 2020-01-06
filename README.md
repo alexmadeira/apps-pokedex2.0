@@ -13,6 +13,7 @@ Este projeto foi desenvolvido utlizando
 
 - [ReactJs](https://github.com/facebook/react/ 'React js')
 - [PokeApi](https://github.com/PokeAPI/pokeapi 'PokeApi')
+- [:art: rgbaster](https://github.com/briangonzalez/rgbaster.js 'rgbaster')
 
 ### Pré-requisitos
 
