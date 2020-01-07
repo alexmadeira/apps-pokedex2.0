@@ -8,12 +8,13 @@ export const Container = styled.form`
   margin: 0 calc(${Spaces.BaseMargin} * 8);
   input {
     border-radius: 5px;
-    background: ${Colors.LightShadow};
+    background: ${Colors.White};
     border: 1px solid ${Colors.DarkShadow};
     padding: calc(${Spaces.BasePadding} / 2);
     font-size: ${Fonts.sizes.Small};
     transition: all 250ms linear;
     font-weight: 600;
+    text-align: center;
     &:focus {
       background: ${Colors.White};
     }
