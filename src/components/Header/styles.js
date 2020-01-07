@@ -23,4 +23,5 @@ export const Title = styled.h1`
   font-size: ${Fonts.sizes.Bigger};
   font-weight: 800;
   text-shadow: 0 0 12px ${Colors.DarkShadow};
+  text-transform: capitalize;
 `;
