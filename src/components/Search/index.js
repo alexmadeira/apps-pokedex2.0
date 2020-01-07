@@ -12,6 +12,7 @@ export default function Search() {
   const handlerPokemon = e => {
     e.preventDefault();
     searchPokemon(findPokemon);
+    setFindPokemon('');
   };
 
   return (
@@ -21,7 +22,7 @@ export default function Search() {
         placeholder="Search by Nº or Name"
         onChange={e => setFindPokemon(e.target.value)}
       />
-      <button type="button" onClick={e => handlerPokemon(e)}>
+      <button type="button" onClick={e => findPokemon && handlerPokemon(e)}>
         <FaSearch />
       </button>
     </Container>
