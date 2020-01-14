@@ -1,4 +1,10 @@
-# Pokedex 2.0 [![Netlify Status](https://api.netlify.com/api/v1/badges/919cf1fe-b237-4b3e-a045-7b551e4a4af3/deploy-status)](https://app.netlify.com/sites/elated-babbage-b8786b/deploys)
+# Pokedex 2.0 
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/919cf1fe-b237-4b3e-a045-7b551e4a4af3/deploy-status)](https://app.netlify.com/sites/elated-babbage-b8786b/deploys)
+
+![License MIT](https://img.shields.io/badge/license-MIT-green)
+
+[![Made By Alex Madeira](https://img.shields.io/badge/%20made%20by-Alex%20Madeira-blue)](https://www.alexmadeira.com.br/)
 
 Um projeto que desenvolvi para passar o tempo e me divertir.
 
@@ -54,4 +60,8 @@ Não há rotina de deploy, utilizo a ferramenta [netlify]("https://www.netlify.c
 
 ## Licença
 
-Esse projeto não tem Licença mas sinta-se a vontade para olhar baixar copiar não tem problema :)
+Copyright by [Alex Madeira](https://www.alexmadeira.com.br/).
+
+Sinta-se a vontade para olhar, baixar, copiar, não tem problema :)
+
+MIT license.
